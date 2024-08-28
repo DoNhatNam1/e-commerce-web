@@ -4,12 +4,7 @@ import prisma from '../models/db';
 
 export const getAllProducts = async (req: Request, res: Response) => {
   try {
-    const products = await prisma.product.findMany({
-      include: {
-        category: true,
-        orderItems: true,
-      },
-    });
+    const products = await prisma.product.findMany({});
     res.render('products', { products });
   } catch (error) {
     res.status(500).send(error.message);

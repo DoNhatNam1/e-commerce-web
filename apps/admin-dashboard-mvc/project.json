@@ -16,8 +16,13 @@
         "bundle": false,
         "main": "apps/admin-dashboard-mvc/src/main.ts",
         "tsConfig": "apps/admin-dashboard-mvc/tsconfig.app.json",
-        "assets": ["apps/admin-dashboard-mvc/src/assets"],
-        "generatePackageJson": true,
+        "assets": [
+          {
+            "input": "apps/admin-dashboard-mvc/src/views",
+            "glob": "**/*",
+            "output": "apps/admin-dashboard-mvc/src/views"
+          }
+        ],
         "esbuildOptions": {
           "sourcemap": true,
           "outExtension": {
@@ -55,4 +60,5 @@
       }
     }
   }
+
 }
