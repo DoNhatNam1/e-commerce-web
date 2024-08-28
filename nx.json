@@ -36,8 +36,10 @@
       "plugin": "@nx/jest/plugin",
       "options": {
         "targetName": "test"
-      }
-    }
+      },
+      "exclude": ["apps/admin-dashboard-mvc-e2e/**/*"]
+    },
+    "@nx-dotnet/core"
   ],
   "generators": {
     "@nx/react": {
@@ -54,6 +56,13 @@
         "style": "tailwind",
         "linter": "eslint"
       }
+    }
+  },
+  "targetDefaults": {
+    "@nx/esbuild:esbuild": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   }
 }

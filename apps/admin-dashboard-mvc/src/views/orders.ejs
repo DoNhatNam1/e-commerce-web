@@ -1,0 +1,28 @@
+<!-- src/views/orders.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orders</title>
+</head>
+<body>
+  <h1>Orders List</h1>
+  <ul>
+    <% orders.forEach(order => { %>
+      <li>Order ID: <%= order.id %> - Customer ID: <%= order.customerId %> - Date: <%= order.orderDate %>
+        <ul>
+          <% order.orderItems.forEach(item => { %>
+            <li>Product: <%= item.product.name %> - Quantity: <%= item.quantity %></li>
+          <% }) %>
+        </ul>
+      </li>
+    <% }) %>
+  </ul>
+  <form action="/orders" method="POST">
+    <input type="text" name="customerId" placeholder="Customer ID" required>
+    <input type="text" name="orderItems" placeholder='Order Items in JSON (e.g., [{"productId":1, "quantity":2}])' required>
+    <button type="submit">Add Order</button>
+  </form>
+</body>
+</html>
